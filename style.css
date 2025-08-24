@@ -1,0 +1,304 @@
+:root {
+  --bg: #f5f7fa;
+  --text: #2d3436;
+  --accent: #6c5ce7;
+  --item-bg: rgba(255, 255, 255, 0.25);
+  --border: rgba(255, 255, 255, 0.4);
+  --glass-blur: blur(20px);
+}
+
+
+body.dark {
+  background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364);
+  background-size: 400% 400%;
+  animation: animatedBackground 12s ease infinite;
+
+  --text: #ffffff;
+  --accent: #00ffff;
+  --item-bg: rgba(255, 255, 255, 0.06);
+  --border: rgba(255, 255, 255, 0.2);
+  --glass-blur: blur(30px);
+}
+
+* {
+  box-sizing: border-box;
+  transition: background-color 0.4s ease, color 0.4s ease, border 0.4s ease;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to bottom right, #dfe9f3, #ffffff);
+  color: var(--text);
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 32px;
+  text-align: center;
+  margin-bottom: 15px;
+  color: var(--text);
+}
+
+.container {
+  background: var(--item-bg);
+  padding: 30px;
+  margin-top: 20px;
+  border-radius: 30px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  width: 90%;
+  max-width: 600px;
+  border: 1px solid var(--border);
+  backdrop-filter: var(--glass-blur);
+}
+
+.input-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+#taskInput,
+#dueDate,
+#category {
+  padding: 12px;
+  border: 2px solid var(--accent);
+  border-radius: 12px;
+  font-size: 14px;
+  flex: 1;
+  background: white;
+  color: var(--text);
+  outline: none;
+}
+
+#addTaskBtn {
+  padding: 12px 18px;
+  background: linear-gradient(135deg, #6c5ce7, #00b894);
+  border: none;
+  color: white;
+  font-weight: bold;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+#addTaskBtn:active {
+  animation: bounce 0.3s;
+}
+
+.filters {
+  text-align: center;
+  margin: 10px 0 20px 0;
+}
+
+.filter-btn {
+  margin: 0 6px;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 8px;
+  background: #dfe6e9;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.filter-btn.active {
+  background: var(--accent);
+  color: white;
+}
+
+#taskList {
+  list-style-type: none;
+  padding: 0;
+}
+
+.task-item {
+  display: flex;
+  justify-content: space-between;
+  background: var(--item-bg);
+  padding: 14px 20px;
+  border-radius: 16px;
+  margin-bottom: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+  backdrop-filter: var(--glass-blur);
+  animation: fadeIn 0.4s ease-in;
+  box-shadow: 0 6px 16px rgba(108, 92, 231, 0.15);
+}
+
+.task-left span {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.task-meta {
+  font-size: 12px;
+  color: #777;
+  margin-top: 4px;
+}
+
+.task-buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.edit-btn {
+  font-size: 18px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #0984e3;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.edit-btn:hover {
+  color: #74b9ff;
+  transform: scale(1.2);
+}
+
+.delete-btn {
+  font-size: 18px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #d63031;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.delete-btn:hover {
+  color: #ff7675;
+  transform: scale(1.2);
+}
+
+.task-item.completed span {
+  text-decoration: line-through;
+  color: gray;
+}
+
+
+body.dark #taskInput,
+body.dark #dueDate,
+body.dark #category {
+  background: #1f2937;
+  color: #ffffff;
+  border: 2px solid #00ffff;
+}
+
+body.dark #addTaskBtn {
+  background: linear-gradient(135deg, #00cec9, #0984e3);
+  color: white;
+  box-shadow: 0 4px 15px rgba(0, 255, 255, 0.3);
+}
+
+body.dark .task-item span,
+body.dark .task-item .task-meta {
+  color: #ffffff;
+}
+
+body.dark .filter-btn {
+  background: #34495e;
+  color: #ffffff;
+}
+
+body.dark .filter-btn.active {
+  background: #00ffff;
+  color: #111;
+}
+
+
+input::placeholder {
+  color: #888;
+}
+body.dark input::placeholder {
+  color: #ccc;
+}
+
+
+.toggle-wrapper {
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 45px;
+  height: 24px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  background-color: #ccc;
+  border-radius: 20px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  border-radius: 50%;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: var(--accent);
+}
+
+input:checked + .slider:before {
+  transform: translateX(21px);
+}
+
+.toggle-label {
+  margin-left: 10px;
+  font-size: 14px;
+}
+
+
+@keyframes bounce {
+  0% { transform: scale(1); }
+  30% { transform: scale(1.1); }
+  60% { transform: scale(0.95); }
+  100% { transform: scale(1); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideOut {
+  from { opacity: 1; transform: translateX(0); }
+  to { opacity: 0; transform: translateX(100%); }
+}
+
+.task-item.removing {
+  animation: slideOut 0.4s ease-out forwards;
+}
+
+@keyframes animatedBackground {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
